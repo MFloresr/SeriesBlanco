@@ -5,7 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageViewBuilder;
+import javafx.scene.layout.Pane;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import javax.lang.model.element.Element;
 import javax.lang.model.util.Elements;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Controller {
@@ -59,8 +63,9 @@ public class Controller {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //driver.findElements(By.xpath("//div[@id='post-body-8452518480913717526']/h2")).size();
         conteoTemporadas();
+        conteocapitulos();
 
-       /* for (int i = 0;i<driver.findElements(By.xpath("//div[@id='post-body-8452518480913717526']/h2")).size();i++){
+       /*for (int i = 0;i<driver.findElements(By.xpath("//div[@id='post-body-8452518480913717526']/h2")).size();i++){
             //System.out.println(driver.findElements(By.xpath("//div[@id='post-body-8452518480913717526']/h2")).get(i));
             //options.add("Temporada "+(i+1));
             combotemporada.getItems().add("Temporada " +(i+1));
@@ -75,13 +80,24 @@ public class Controller {
 
         //$x("//div[contains(@id,'Blog1')]/div[1]/div[1]/div[2]/")
             WebElement img = driver.findElement(By.id("port_serie"));
-            String url= img.getAttribute("src");
+        String url= img.getAttribute("src");
+        Image image= new Image(url);
+
             System.out.println(url);
+        imagen.setImage(image);
 
     }
     private void conteoTemporadas(){
         for (int i = 0;i<driver.findElements(By.xpath("//div[@id='post-body-8452518480913717526']/h2")).size();i++){
             combotemporada.getItems().add("Temporada " +(i+1));
+        }
+    }
+
+    private void conteocapitulos(){
+        List<WebElement> elementos = driver.findElements(By.className("zebra"));
+        for (int i = 0;i<elementos.size();i++){
+            elementos.get(i);
+            //combotemporada.getItems().add("Temporada " +(i+1));
         }
     }
 
