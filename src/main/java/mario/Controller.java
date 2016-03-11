@@ -46,10 +46,13 @@ public class Controller {
     private ObservableList<String> items = FXCollections.observableArrayList ();
     private ArrayList<Temporada> temporadas = new ArrayList<Temporada>();
     WebDriver driver;
-    Alert alert = new Alert(Alert.AlertType.WARNING);
-    ArrayList<String> elements= new ArrayList<String>();
+    int espa = 0;
+    int ing = 0;
+    int japo = 0;
+    int ingsub = 0;
     @FXML
     public void buscarSerie(Event event){
+        resetearcampostodos();
         conectarPagina();
     }
 
@@ -128,14 +131,22 @@ public class Controller {
             items.add(capitulos.get(i));
         }
     }
-
+    private void resetearcampostodos(){
+        items.clear();
+        temporadas.clear();
+        contadores0();
+        combotemporada.getItems().clear();
+    }
+    private void contadores0(){
+        espa = 0;
+        ing = 0;
+        japo = 0;
+        ingsub = 0;
+    }
     private void llenarIdiomas(){
         Temporada tempo = temporadas.get(combotemporada.getSelectionModel().getSelectedIndex());
         ArrayList<String> idiomas= tempo.getIdiomas();
-        int espa = 0;
-        int ing = 0;
-        int japo = 0;
-        int ingsub = 0;
+        contadores0();
         for(int i=0;i<idiomas.size();i++){
             System.out.println(idiomas.get(i));
             if(idiomas.get(i).contains("/es.")){
