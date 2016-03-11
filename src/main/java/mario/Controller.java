@@ -42,7 +42,7 @@ public class Controller {
     @FXML
     private ListView listcapitulos;
     private ObservableList<String> items = FXCollections.observableArrayList ();
-    private ObservableList<String> options = FXCollections.observableArrayList();
+    private ArrayList<Temporada> temporadas = new ArrayList<Temporada>();
     WebDriver driver;
     Alert alert = new Alert(Alert.AlertType.WARNING);
     ArrayList<String> elements= new ArrayList<String>();
@@ -64,28 +64,13 @@ public class Controller {
         //driver.findElements(By.xpath("//div[@id='post-body-8452518480913717526']/h2")).size();
         conteoTemporadas();
         conteocapitulos();
-
-       /*for (int i = 0;i<driver.findElements(By.xpath("//div[@id='post-body-8452518480913717526']/h2")).size();i++){
-            //System.out.println(driver.findElements(By.xpath("//div[@id='post-body-8452518480913717526']/h2")).get(i));
-            //options.add("Temporada "+(i+1));
-            combotemporada.getItems().add("Temporada " +(i+1));
-        }*/
-
-        //combotemporada = new ComboBox();
-        //combotemporada.setItems(options);
-        //driver.findElement(By.id("buscar-blamco")).submit();
-        //driver.findElement(By.id("loginbtn")).click();
-        //driver.findElement(By.linkText("MÒDUL 3: PROGRAMACIÓ 2")).click();
-        //System.out.println(driver.findElements(By.partialLinkText("Tasca")).size()+1+"chocolata");
-
-        //$x("//div[contains(@id,'Blog1')]/div[1]/div[1]/div[2]/")
-            WebElement img = driver.findElement(By.id("port_serie"));
+        ponerImagen();
+    }
+    private void ponerImagen(){
+        WebElement img = driver.findElement(By.id("port_serie"));
         String url= img.getAttribute("src");
         Image image= new Image(url);
-
-            System.out.println(url);
         imagen.setImage(image);
-
     }
     private void conteoTemporadas(){
         for (int i = 0;i<driver.findElements(By.xpath("//div[@id='post-body-8452518480913717526']/h2")).size();i++){
@@ -95,11 +80,69 @@ public class Controller {
 
     private void conteocapitulos(){
         List<WebElement> elementos = driver.findElements(By.className("zebra"));
+
         for (int i = 0;i<elementos.size();i++){
-            elementos.get(i);
-            //combotemporada.getItems().add("Temporada " +(i+1));
+
+            Temporada temporada = new Temporada();
+            List<WebElement> tr= elementos.get(i).findElements(By.tagName("a"));
+            ArrayList<String> capitulos= new ArrayList<String>();
+            for(int x =0;x<tr.size();x++){
+
+                capitulos.add((i+1)+"x"+(x+1)+"- Capitulo " + (x+1));
+
+            }
+            temporada.setCapitulos(capitulos);
+            List<WebElement> img= elementos.get(i).findElements(By.tagName("img"));
+            ArrayList<String> idiomas= new ArrayList<String>();
+            for(int x =0;x<img.size();x++){
+
+                idiomas.add(img.get(x).getAttribute("src"));
+
+            }
+            temporada.setIdiomas(idiomas);
+            temporadas.add(temporada);
+        }
+
+        for(int i =0;i<temporadas.size();i++){
+            System.out.println(temporadas.get(i));
         }
     }
 
+    @FXML
+    public void seleccionarTemprada(Event event){
+        listcapitulos.setItems(items);
+        if(combotemporada != null && !combotemporada.getItems().isEmpty()){
+            if(!listcapitulos.getItems().isEmpty()){
+                listcapitulos.getItems().clear();
+            }
+            rellenarlista();
+            llenarIdiomas();
+        }
+    }
+    private void rellenarlista(){
+        Temporada tempo = temporadas.get(combotemporada.getSelectionModel().getSelectedIndex());
+        ArrayList<String> capitulos = tempo.getCapitulos();
+        for(int i=0;i<capitulos.size();i++){
+            items.add(capitulos.get(i));
+        }
+    }
 
+    private void llenarIdiomas(){
+        Temporada tempo = temporadas.get(combotemporada.getSelectionModel().getSelectedIndex());
+        ArrayList<String> idiomas= tempo.getIdiomas();
+        int espa = 0;
+        int ing = 0;
+        int sub = 0;
+        for(int i=0;i<idiomas.size();i++){
+            System.out.println(idiomas.get(i));
+            if(idiomas.get(i).contains("/es.*")){
+                espa=espa+1;
+            }
+            /*if(idiomas.get(i).contains("/es.*")){
+                espa=espa+1;
+            }*/
+            //items.add(capitulos.get(i));
+        }
+        textcastella.setText(String.valueOf(espa));
+    }
 }

@@ -22,7 +22,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
             <Button fx:id="btnBuscar" layoutX="500.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#buscarSerie" text="Buscar" />
-            <ComboBox fx:id="combotemporada" layoutX="248.0" layoutY="94.0" prefHeight="25.0" prefWidth="303.0" />
+            <ComboBox fx:id="combotemporada" layoutX="248.0" layoutY="94.0" onMouseClicked="#seleccionarTemprada" prefHeight="25.0" prefWidth="303.0" />
             <ImageView fx:id="imagen" fitHeight="248.0" fitWidth="175.0" layoutX="33.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="61.0" layoutY="51.0" text="Seriè" />
             <Label layoutX="380.0" layoutY="170.0" text="Castellà" />
