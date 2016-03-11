@@ -134,7 +134,6 @@ public class Controller {
         ArrayList<String> idiomas= tempo.getIdiomas();
         int espa = 0;
         int ing = 0;
-        int subjapo = 0;
         int japo = 0;
         int ingsub = 0;
         for(int i=0;i<idiomas.size();i++){
@@ -154,5 +153,8 @@ public class Controller {
 
         }
         textcastella.setText(String.valueOf(espa));
+        textangles.setText(String.valueOf(ing));
+        textsubtitulat.setText(String.valueOf(ingsub));
+        subtitulatjapones.setText(String.valueOf(japo));
     }
 }
