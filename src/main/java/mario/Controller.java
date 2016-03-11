@@ -32,6 +32,8 @@ public class Controller {
     private TextField textsubtitulat;
     @FXML
     private TextField textangles;
+    @FXML
+    private TextField subtitulatjapones;
 
     @FXML
     private ImageView imagen;
@@ -132,16 +134,24 @@ public class Controller {
         ArrayList<String> idiomas= tempo.getIdiomas();
         int espa = 0;
         int ing = 0;
-        int sub = 0;
+        int subjapo = 0;
+        int japo = 0;
+        int ingsub = 0;
         for(int i=0;i<idiomas.size();i++){
             System.out.println(idiomas.get(i));
-            if(idiomas.get(i).contains("/es.*")){
+            if(idiomas.get(i).contains("/es.")){
                 espa=espa+1;
             }
-            /*if(idiomas.get(i).contains("/es.*")){
-                espa=espa+1;
-            }*/
-            //items.add(capitulos.get(i));
+            if(idiomas.get(i).contains("/japovose.")){
+                japo=japo+1;
+            }
+            if(idiomas.get(i).contains("/vos.")){
+                ingsub=ingsub+1;
+            }
+            if(idiomas.get(i).contains("/vo.")){
+                ing=ing+1;
+            }
+
         }
         textcastella.setText(String.valueOf(espa));
     }

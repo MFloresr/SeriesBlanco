@@ -25,14 +25,16 @@
             <ComboBox fx:id="combotemporada" layoutX="248.0" layoutY="94.0" onMouseClicked="#seleccionarTemprada" prefHeight="25.0" prefWidth="303.0" />
             <ImageView fx:id="imagen" fitHeight="248.0" fitWidth="175.0" layoutX="33.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="61.0" layoutY="51.0" text="Seriè" />
-            <Label layoutX="380.0" layoutY="170.0" text="Castellà" />
-            <Label layoutX="380.0" layoutY="226.0" text="Subtitulat" />
-            <Label layoutX="380.0" layoutY="275.0" text="Anglès" />
+            <Label layoutX="379.0" layoutY="149.0" text="Castellà" />
+            <Label layoutX="362.0" layoutY="192.0" text="Subtitulat angles" />
+            <Label layoutX="381.0" layoutY="229.0" text="Anglès" />
             <ListView fx:id="listcapitulos" layoutX="240.0" layoutY="140.0" prefHeight="195.0" prefWidth="111.0" />
             <TextField fx:id="textBuscar" layoutX="114.0" layoutY="47.0" prefHeight="25.0" prefWidth="362.0" />
-            <TextField fx:id="textcastella" editable="false" layoutX="451.0" layoutY="166.0" prefHeight="25.0" prefWidth="122.0" />
-            <TextField fx:id="textsubtitulat" editable="false" layoutX="451.0" layoutY="222.0" prefHeight="25.0" prefWidth="122.0" />
-            <TextField fx:id="textangles" editable="false" layoutX="451.0" layoutY="271.0" prefHeight="25.0" prefWidth="122.0" />
+            <TextField fx:id="textcastella" editable="false" layoutX="464.0" layoutY="145.0" prefHeight="25.0" prefWidth="122.0" />
+            <TextField fx:id="textsubtitulat" editable="false" layoutX="464.0" layoutY="188.0" prefHeight="25.0" prefWidth="122.0" />
+            <TextField fx:id="textangles" editable="false" layoutX="464.0" layoutY="225.0" prefHeight="25.0" prefWidth="122.0" />
+            <Label layoutX="359.0" layoutY="274.0" text="Subtitulat japones" />
+            <TextField fx:id="subtitulatjapones" layoutX="464.0" layoutY="270.0" prefHeight="25.0" prefWidth="122.0" />
          </children></Pane>
    </children>
 </GridPane>
